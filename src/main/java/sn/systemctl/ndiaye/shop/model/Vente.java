@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,7 +38,7 @@ public class Vente implements Serializable{
 	@Transient
 	private Float totalVente;
 	
-	@OneToMany(mappedBy = "vente")
+	@OneToMany(mappedBy = "vente", fetch = FetchType.EAGER)
 	private List<LigneVente> ventes;
 
 }

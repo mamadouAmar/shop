@@ -7,6 +7,6 @@ import sn.systemctl.ndiaye.shop.model.Produit;
 
 
 @Repository
-public interface ProduitRepository extends JpaRepository<Produit, Short> {
+public interface ProduitRepository extends JpaRepository<Produit, Integer> {
 
 }

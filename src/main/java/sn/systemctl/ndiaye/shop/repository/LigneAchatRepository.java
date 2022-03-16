@@ -8,5 +8,5 @@ import sn.systemctl.ndiaye.shop.model.LigneAchat;
 
 @Repository
 public interface LigneAchatRepository extends JpaRepository<LigneAchat, Integer> {
-
+	
 }

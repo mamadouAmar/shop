@@ -1,5 +1,6 @@
 package sn.systemctl.ndiaye.shop.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,10 @@ public class VenteService {
 	
 	@Autowired
 	private VenteRepository venteRepository;
+	
+	public List<Vente> getAllVentes(){
+		return venteRepository.getAllVente();
+	}
 	
 	public Optional<Vente> getAchat(Long id){
 		return venteRepository.findById(id);

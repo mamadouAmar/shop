@@ -15,15 +15,15 @@ public class AchatService {
 	@Autowired
 	private AchatRepository achatRepository;
 	
-	public List<Achat> getAllAchats(){
+	public List<Achat> get(){
 		return achatRepository.getAllAchats();
 	}
 	
-	public Optional<Achat> getAchat(Long id){
+	public Optional<Achat> get(Long id){
 		return achatRepository.findById(id);
 	}
 	
-	public Achat postAchat(Achat achat) {
+	public Achat post(Achat achat) {
 		return achatRepository.save(achat);
 	}
 }

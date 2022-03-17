@@ -8,11 +8,12 @@
 		<version>2.6.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	
 	<groupId>sn.systemctl.ndiaye</groupId>
 	<artifactId>shop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>shop</name>
-	<description>Une application de gestion de stock et de comptabilité d&apos;un fournisseur de produit</description>
+	<description>Une application de gestion de stock et de comptabilité d un fournisseur de produit</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

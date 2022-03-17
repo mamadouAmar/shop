@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 import sn.systemctl.ndiaye.shop.service.LigneAchatService;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/shop/ligne-achat")
 public class LigneAchatController {
 	
 	@Autowired
 	private LigneAchatService ligneAchatService;
+	
+	
 }

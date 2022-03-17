@@ -15,15 +15,15 @@ public class ProduitService {
 	@Autowired
 	private ProduitRepository produitRepository;
 	
-	public List<Produit> getAllProduit() {
+	public List<Produit> get() {
 		return produitRepository.getAllProduit();
 	}
 	
-	public Optional<Produit> getProduit(Integer id) {
+	public Optional<Produit> get(Integer id) {
 		return produitRepository.findById(id);
 	}
 	
-	public Produit postProduit(Produit produit) {
+	public Produit post(Produit produit) {
 		return produitRepository.save(produit);
 	}
 }

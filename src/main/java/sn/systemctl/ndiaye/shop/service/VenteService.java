@@ -15,15 +15,15 @@ public class VenteService {
 	@Autowired
 	private VenteRepository venteRepository;
 	
-	public List<Vente> getAllVentes(){
+	public List<Vente> get(){
 		return venteRepository.getAllVente();
 	}
 	
-	public Optional<Vente> getAchat(Long id){
+	public Optional<Vente> get(Long id){
 		return venteRepository.findById(id);
 	}
 	
-	public Vente postAchat(Vente vente) {
+	public Vente post(Vente vente) {
 		return venteRepository.save(vente);
 	}
 }

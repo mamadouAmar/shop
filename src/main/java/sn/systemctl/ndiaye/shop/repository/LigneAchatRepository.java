@@ -11,6 +11,6 @@ import sn.systemctl.ndiaye.shop.model.LigneAchat;
 
 @Repository
 public interface LigneAchatRepository extends JpaRepository<LigneAchat, Integer> {
-	
+
 	public List<LigneAchat> findByAchat(Achat a);
 }

@@ -11,7 +11,7 @@ import sn.systemctl.ndiaye.shop.model.Produit;
 
 @Repository
 public interface ProduitRepository extends JpaRepository<Produit, Integer> {
-	
+
 	@Query("select p.idProduit, p.libelle, p.stock, p.coutUnitaire, "
 			+ "p.prixVente from Produit p ")
 	List<Produit> getAllProduit();

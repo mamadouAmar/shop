@@ -13,7 +13,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-
 import lombok.Data;
 
 @Data
@@ -21,25 +20,25 @@ import lombok.Data;
 public class Achat implements Serializable{
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idAchat;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateEnregistrement;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateAchat;
-	
+
 	private Float frais;
 
-	@Transient
+//	@Transient
 	private Float totalAchat;
-	
+
 	@OneToMany(mappedBy = "achat")
 	private List<LigneAchat> achats;
 }

@@ -16,27 +16,27 @@ import lombok.Data;
 public class LigneAchat implements Serializable{
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idLigneAchat;
-	
+
 	@ManyToOne
 	private Achat achat;
-	
+
 	@ManyToOne
 	private Produit produit;
-	
+
 	private Short quantite;
-	
+
 	private Float coutUnitaire;
-	
+
 	@Transient
 	private Float coutTotal;
-	
+
 	private Float prixVente;
 
 }

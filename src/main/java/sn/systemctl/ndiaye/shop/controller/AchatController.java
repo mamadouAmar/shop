@@ -20,20 +20,20 @@ public class AchatController {
 
 	@Autowired
 	private AchatService achatService;
-	
+
 	@GetMapping
 	public List<Achat> get(){
 		return achatService.get();
 	}
-	
+
 	@GetMapping("/{id}")
 	public Optional<Achat> get(@PathVariable Long id){
 		return achatService.get(id);
 	}
-	
+
 	@PostMapping
 	public Achat post(@RequestBody Achat a) {
 		return achatService.post(a);
 	}
-	
+
 }

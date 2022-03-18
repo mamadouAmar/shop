@@ -11,18 +11,18 @@ import sn.systemctl.ndiaye.shop.repository.AchatRepository;
 
 @Service
 public class AchatService {
-	
+
 	@Autowired
 	private AchatRepository achatRepository;
-	
+
 	public List<Achat> get(){
 		return achatRepository.getAllAchats();
 	}
-	
+
 	public Optional<Achat> get(Long id){
 		return achatRepository.findById(id);
 	}
-	
+
 	public Achat post(Achat achat) {
 		return achatRepository.save(achat);
 	}

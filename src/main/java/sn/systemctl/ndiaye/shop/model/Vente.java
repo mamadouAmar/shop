@@ -21,24 +21,24 @@ import lombok.Data;
 public class Vente implements Serializable{
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idVente;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateEnregistrement;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateVente;
-	
-	@Transient
+
+//	@Transient
 	private Float totalVente;
-	
-	@OneToMany(mappedBy = "vente", fetch = FetchType.EAGER)
+
+	@OneToMany(mappedBy = "vente", fetch = FetchType.LAZY)
 	private List<LigneVente> ventes;
 
 }

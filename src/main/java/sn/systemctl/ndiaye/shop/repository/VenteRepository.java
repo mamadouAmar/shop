@@ -11,8 +11,8 @@ import sn.systemctl.ndiaye.shop.model.Vente;
 
 @Repository
 public interface VenteRepository extends JpaRepository<Vente, Long> {
-	
-	@Query("select v.idVente, v.dateVente, a.totalVente "
+
+	@Query("select v.idVente, v.dateVente, v.totalVente "
 			+ "from Vente v")
 	public List<Vente> getAllVente();
 }

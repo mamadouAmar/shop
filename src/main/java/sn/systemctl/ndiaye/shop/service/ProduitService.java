@@ -11,18 +11,18 @@ import sn.systemctl.ndiaye.shop.repository.ProduitRepository;
 
 @Service
 public class ProduitService {
-	
+
 	@Autowired
 	private ProduitRepository produitRepository;
-	
+
 	public List<Produit> get() {
 		return produitRepository.getAllProduit();
 	}
-	
+
 	public Optional<Produit> get(Integer id) {
 		return produitRepository.findById(id);
 	}
-	
+
 	public Produit post(Produit produit) {
 		return produitRepository.save(produit);
 	}

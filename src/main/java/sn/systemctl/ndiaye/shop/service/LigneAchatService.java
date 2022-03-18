@@ -11,17 +11,17 @@ import sn.systemctl.ndiaye.shop.repository.LigneAchatRepository;
 
 @Service
 public class LigneAchatService {
-	
+
 private LigneAchatRepository ligneAchatRepository;
-	
+
 	public Optional<LigneAchat> get(Integer id){
 		return ligneAchatRepository.findById(id);
 	}
-	
+
 	public List<LigneAchat> post(List<LigneAchat> liste) {
 		return ligneAchatRepository.saveAll(liste);
 	}
-	
+
 	public List<LigneAchat> get(Achat a){
 		return ligneAchatRepository.findByAchat(a);
 	}

@@ -17,25 +17,25 @@ import lombok.Data;
 public class LigneVente implements Serializable{
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idLigneVente;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Vente vente;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Produit produit;
-	
+
 	private Short quantite;
-	
+
 	@Transient
 	private Float total;
-	
-	
+
+
 
 }

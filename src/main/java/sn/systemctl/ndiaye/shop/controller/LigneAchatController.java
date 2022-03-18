@@ -9,9 +9,9 @@ import sn.systemctl.ndiaye.shop.service.LigneAchatService;
 @RestController
 @RequestMapping("/api/shop/ligne-achat")
 public class LigneAchatController {
-	
+
 	@Autowired
 	private LigneAchatService ligneAchatService;
-	
-	
+
+
 }

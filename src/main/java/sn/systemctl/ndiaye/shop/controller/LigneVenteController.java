@@ -12,7 +12,7 @@ public class LigneVenteController {
 
 	@Autowired
 	private LigneVenteService ligneVenteService;
-	
-	
-	
+
+
+
 }

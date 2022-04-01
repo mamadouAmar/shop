@@ -16,7 +16,7 @@ public class AchatService {
 	private AchatRepository achatRepository;
 
 	public List<Achat> get(){
-		return achatRepository.getAllAchats();
+		return achatRepository.findAll();
 	}
 
 	public Optional<Achat> get(Long id){

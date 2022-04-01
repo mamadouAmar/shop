@@ -6,17 +6,19 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.Data;
 import sn.systemctl.ndiaye.shop.model.Produit;
 import sn.systemctl.ndiaye.shop.repository.ProduitRepository;
 
 @Service
+@Data
 public class ProduitService {
 
 	@Autowired
 	private ProduitRepository produitRepository;
 
 	public List<Produit> get() {
-		return produitRepository.getAllProduit();
+		return produitRepository.findAll();
 	}
 
 	public Optional<Produit> get(Integer id) {

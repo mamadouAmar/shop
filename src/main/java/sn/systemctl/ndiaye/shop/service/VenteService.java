@@ -16,7 +16,7 @@ public class VenteService {
 	private VenteRepository venteRepository;
 
 	public List<Vente> get(){
-		return venteRepository.getAllVente();
+		return venteRepository.findAll();
 	}
 
 	public Optional<Vente> get(Long id){

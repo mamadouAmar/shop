@@ -13,6 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import lombok.Data;
 
 @Data
@@ -29,6 +31,7 @@ public class Achat implements Serializable{
 	private Long idAchat;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@CreatedDate
 	private Date dateEnregistrement;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -36,15 +39,10 @@ public class Achat implements Serializable{
 
 	private Float frais;
 
-//	@Transient
 	private Float totalAchat;
 
 	@OneToMany(mappedBy = "achat")
 	private List<LigneAchat> achats;
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 	public Long getIdAchat() {
 		return idAchat;
@@ -74,10 +72,6 @@ public class Achat implements Serializable{
 		this.idAchat = idAchat;
 	}
 
-	public void setDateEnregistrement(Date dateEnregistrement) {
-		this.dateEnregistrement = dateEnregistrement;
-	}
-
 	public void setDateAchat(Date dateAchat) {
 		this.dateAchat = dateAchat;
 	}
@@ -86,8 +80,11 @@ public class Achat implements Serializable{
 		this.frais = frais;
 	}
 
-	public void setTotalAchat(Float totalAchat) {
-		this.totalAchat = totalAchat;
+	public void setTotalAchat() {
+		this.totalAchat = (float) 0;
+		for (LigneAchat achat : achats) {
+			this.totalAchat += achat.getCoutTotal();
+		}
 	}
 
 	public void setAchats(List<LigneAchat> achats) {

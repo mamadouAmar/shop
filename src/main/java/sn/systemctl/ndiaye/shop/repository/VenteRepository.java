@@ -7,12 +7,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import sn.systemctl.ndiaye.shop.model.Vente;
+import sn.systemctl.ndiaye.shop.model.mocked.ReductedVente;
 
 
 @Repository
 public interface VenteRepository extends JpaRepository<Vente, Long> {
 
-	@Query("select v.idVente, v.dateVente, v.totalVente "
-			+ "from Vente v")
-	public List<Vente> getAllVente();
+	@Query(value="select v.id_Vente, v.date_Vente, v.total_Vente "
+			+ "from Vente v", nativeQuery = true)
+	public List<ReductedVente> get();
 }

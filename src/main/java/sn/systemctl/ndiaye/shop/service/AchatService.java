@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sn.systemctl.ndiaye.shop.model.Achat;
+import sn.systemctl.ndiaye.shop.model.mocked.ReductedAchat;
 import sn.systemctl.ndiaye.shop.repository.AchatRepository;
 
 @Service
@@ -15,8 +16,8 @@ public class AchatService {
 	@Autowired
 	private AchatRepository achatRepository;
 
-	public List<Achat> get(){
-		return achatRepository.findAll();
+	public List<ReductedAchat> get(){
+		return achatRepository.get();
 	}
 
 	public Optional<Achat> get(Long id){

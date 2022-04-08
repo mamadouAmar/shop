@@ -11,11 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.Data;
 
-@Data
 @Entity
 public class LigneVente implements Serializable{
 
@@ -38,7 +35,6 @@ public class LigneVente implements Serializable{
 
 	private Short quantite;
 
-	@Transient
 	private Float total;
 
 	public static long getSerialversionuid() {
@@ -81,8 +77,8 @@ public class LigneVente implements Serializable{
 		this.quantite = quantite;
 	}
 
-	public void setTotal(Float total) {
-		this.total = total;
+	public void setTotal() {
+		this.total = (float) (quantite*produit.getPrixVente());
 	}
 
 }

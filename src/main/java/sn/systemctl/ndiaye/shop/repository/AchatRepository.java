@@ -7,13 +7,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import sn.systemctl.ndiaye.shop.model.Achat;
+import sn.systemctl.ndiaye.shop.model.mocked.ReductedAchat;
 
 
 @Repository
 public interface AchatRepository extends JpaRepository<Achat, Long> {
 
-	@Query("select a.idAchat, a.dateAchat, a.totalAchat "
-			+ "from Achat a")
-	public List<Achat> getAllAchats();
+	@Query(value="select a.id_Achat, a.date_Achat, a.total_Achat "
+			+ "from Achat a", nativeQuery = true)
+	public List<ReductedAchat> get();
 
 }

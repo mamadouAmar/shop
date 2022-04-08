@@ -7,12 +7,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import sn.systemctl.ndiaye.shop.model.Produit;
+import sn.systemctl.ndiaye.shop.model.mocked.ReductedProduit;
 
 
 @Repository
 public interface ProduitRepository extends JpaRepository<Produit, Integer> {
 
-	@Query("select p.idProduit, p.libelle, p.stock, p.coutUnitaire, "
-			+ "p.prixVente from Produit p ")
-	List<Produit> getAllProduit();
+	@Query(value="select p.id_Produit, p.libelle, p.stock, p.cout_Unitaire, p.categorie, "
+			+ "p.prix_Vente from Produit p ", nativeQuery = true)
+	List<ReductedProduit> get();
 }

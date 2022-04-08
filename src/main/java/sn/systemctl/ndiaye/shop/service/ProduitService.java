@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import lombok.Data;
 import sn.systemctl.ndiaye.shop.model.Produit;
+import sn.systemctl.ndiaye.shop.model.mocked.ReductedProduit;
+import sn.systemctl.ndiaye.shop.model.mocked.ReductedVente;
 import sn.systemctl.ndiaye.shop.repository.ProduitRepository;
 
 @Service
@@ -17,8 +19,8 @@ public class ProduitService {
 	@Autowired
 	private ProduitRepository produitRepository;
 
-	public List<Produit> get() {
-		return produitRepository.findAll();
+	public List<ReductedProduit> get() {
+		return produitRepository.get();
 	}
 
 	public Optional<Produit> get(Integer id) {

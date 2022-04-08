@@ -14,6 +14,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import lombok.Data;
 
 @Entity
@@ -30,12 +32,12 @@ public class Vente implements Serializable{
 	private Long idVente;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@CreatedDate
 	private Date dateEnregistrement;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateVente;
 
-//	@Transient
 	private Float totalVente;
 
 	@OneToMany(mappedBy = "vente", fetch = FetchType.LAZY)
@@ -65,16 +67,15 @@ public class Vente implements Serializable{
 		this.idVente = idVente;
 	}
 
-	public void setDateEnregistrement(Date dateEnregistrement) {
-		this.dateEnregistrement = dateEnregistrement;
-	}
-
 	public void setDateVente(Date dateVente) {
 		this.dateVente = dateVente;
 	}
 
-	public void setTotalVente(Float totalVente) {
-		this.totalVente = totalVente;
+	public void setTotalVente() {
+		this.totalVente = (float) 0;
+		for (LigneVente vente : ventes) {
+			this.totalVente += vente.getTotal();
+		}
 	}
 
 	public void setVentes(List<LigneVente> ventes) {

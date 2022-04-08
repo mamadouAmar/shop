@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sn.systemctl.ndiaye.shop.model.Vente;
+import sn.systemctl.ndiaye.shop.model.mocked.ReductedVente;
 import sn.systemctl.ndiaye.shop.repository.VenteRepository;
 
 @Service
@@ -15,8 +16,8 @@ public class VenteService {
 	@Autowired
 	private VenteRepository venteRepository;
 
-	public List<Vente> get(){
-		return venteRepository.findAll();
+	public List<ReductedVente> get(){
+		return venteRepository.get();
 	}
 
 	public Optional<Vente> get(Long id){

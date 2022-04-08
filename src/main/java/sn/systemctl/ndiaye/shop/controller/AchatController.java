@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import sn.systemctl.ndiaye.shop.model.Achat;
+import sn.systemctl.ndiaye.shop.model.mocked.ReductedAchat;
 import sn.systemctl.ndiaye.shop.service.AchatService;
 
 @RestController
@@ -22,7 +23,7 @@ public class AchatController {
 	private AchatService achatService;
 
 	@GetMapping
-	public List<Achat> get(){
+	public List<ReductedAchat> get(){
 		return achatService.get();
 	}
 

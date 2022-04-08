@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import sn.systemctl.ndiaye.shop.model.Produit;
+import sn.systemctl.ndiaye.shop.model.mocked.ReductedProduit;
 import sn.systemctl.ndiaye.shop.service.ProduitService;
 
 @RestController
@@ -22,7 +23,7 @@ public class ProduitController {
 	private ProduitService produitService;
 
 	@GetMapping
-	public List<Produit> get(){
+	public List<ReductedProduit> get(){
 		return produitService.get();
 	}
 

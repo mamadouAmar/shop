@@ -39,7 +39,6 @@ public class LigneAchat implements Serializable{
 
 	private Float coutUnitaire;
 
-	@Transient
 	private Float coutTotal;
 
 	private Float prixVente;
@@ -96,14 +95,12 @@ public class LigneAchat implements Serializable{
 		this.coutUnitaire = coutUnitaire;
 	}
 
-	public void setCoutTotal(Float coutTotal) {
-		this.coutTotal = coutTotal;
+	public void setCoutTotal() {
+		this.coutTotal = coutUnitaire*quantite;
 	}
 
 	public void setPrixVente(Float prixVente) {
 		this.prixVente = prixVente;
 	}
 	
-	
-
 }

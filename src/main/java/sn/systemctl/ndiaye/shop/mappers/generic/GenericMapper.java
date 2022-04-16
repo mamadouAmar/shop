@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public interface GenericMapper<E, D> {
 
 	E asEntity(D d);

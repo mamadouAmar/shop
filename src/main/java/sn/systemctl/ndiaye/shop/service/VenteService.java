@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import sn.systemctl.ndiaye.shop.dto.VenteDTO;
+import sn.systemctl.ndiaye.shop.mappers.VenteMapper;
 import sn.systemctl.ndiaye.shop.model.Vente;
 import sn.systemctl.ndiaye.shop.repository.VenteRepository;
 
@@ -18,8 +19,12 @@ public class VenteService {
 	@Autowired
 	private VenteRepository venteRepository;
 	
-	public Page<Vente> get(Pageable pageable){
-		return venteRepository.findAll(pageable);
+	@Autowired
+	private VenteMapper mapper;
+	
+	
+	public Page<VenteDTO> get(Pageable pageable){
+		return venteRepository.findAll(pageable).map(mapper::asDTO);
 	}
 
 //	public List<Vente> get(){

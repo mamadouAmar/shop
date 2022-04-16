@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lombok.Data;
+import sn.systemctl.ndiaye.shop.dto.ProduitDTO;
+import sn.systemctl.ndiaye.shop.mappers.ProduitMapper;
 import sn.systemctl.ndiaye.shop.model.Produit;
 import sn.systemctl.ndiaye.shop.repository.ProduitRepository;
 
@@ -17,9 +19,12 @@ public class ProduitService {
 
 	@Autowired
 	private ProduitRepository produitRepository;
+	
+	@Autowired
+	private ProduitMapper mapper;
 
-	public Page<Produit> get(Pageable pageable) {
-		return produitRepository.findAll(pageable);
+	public Page<ProduitDTO> get(Pageable pageable) {
+		return produitRepository.findAll(pageable).map(mapper::asDTO);
 	}
 
 	public Optional<Produit> get(Integer id) {

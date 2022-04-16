@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import sn.systemctl.ndiaye.shop.dto.VenteDTO;
 import sn.systemctl.ndiaye.shop.model.Vente;
 import sn.systemctl.ndiaye.shop.service.VenteService;
 
@@ -26,8 +27,8 @@ public class VenteController {
 	private VenteService venteService;
 
 	@GetMapping
-	public ResponseEntity<Page<Vente>> get(@PageableDefault Pageable page){
-		Page<Vente> result = venteService.get(page);
+	public ResponseEntity<Page<VenteDTO>> get(@PageableDefault Pageable page){
+		Page<VenteDTO> result = venteService.get(page);
 		return ResponseEntity.ok().body(result);
 	}
 

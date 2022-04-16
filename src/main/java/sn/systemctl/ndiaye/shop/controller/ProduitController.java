@@ -1,6 +1,5 @@
 package sn.systemctl.ndiaye.shop.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +27,8 @@ public class ProduitController {
 	private ProduitService produitService;
 
 	@GetMapping
-	public ResponseEntity<Page<Produit>> get(@PageableDefault Pageable page){
-		Page<Produit> result = produitService.get(page);
+	public ResponseEntity<Page<ProduitDTO>> get(@PageableDefault Pageable page){
+		Page<ProduitDTO> result = produitService.get(page);
 		return ResponseEntity.ok().body(result);
 	}
 

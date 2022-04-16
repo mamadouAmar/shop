@@ -1,7 +1,7 @@
-package sn.systemctl.ndiaye.shop.model.mocked;
+package sn.systemctl.ndiaye.shop.dto;
 
 
-public class ReductedProduit {
+public class ProduitDTO {
 
 	private Integer idProduit;
 

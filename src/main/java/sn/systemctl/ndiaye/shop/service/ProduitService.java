@@ -1,15 +1,14 @@
 package sn.systemctl.ndiaye.shop.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lombok.Data;
 import sn.systemctl.ndiaye.shop.model.Produit;
-import sn.systemctl.ndiaye.shop.model.mocked.ReductedProduit;
-import sn.systemctl.ndiaye.shop.model.mocked.ReductedVente;
 import sn.systemctl.ndiaye.shop.repository.ProduitRepository;
 
 @Service
@@ -19,8 +18,8 @@ public class ProduitService {
 	@Autowired
 	private ProduitRepository produitRepository;
 
-	public List<ReductedProduit> get() {
-		return produitRepository.get();
+	public Page<Produit> get(Pageable pageable) {
+		return produitRepository.findAll(pageable);
 	}
 
 	public Optional<Produit> get(Integer id) {

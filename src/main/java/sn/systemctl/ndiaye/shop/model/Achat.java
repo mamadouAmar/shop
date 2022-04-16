@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import lombok.Data;
 
-@Data
+//@Data
 @Entity
 public class Achat implements Serializable{
 
@@ -41,7 +42,7 @@ public class Achat implements Serializable{
 
 	private Float totalAchat;
 
-	@OneToMany(mappedBy = "achat")
+	@OneToMany(mappedBy = "achat",cascade = CascadeType.ALL)
 	private List<LigneAchat> achats;
 
 	public Long getIdAchat() {

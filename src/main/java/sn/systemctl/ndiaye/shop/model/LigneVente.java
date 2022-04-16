@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -26,11 +27,11 @@ public class LigneVente implements Serializable{
 	private Long idLigneVente;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonBackReference
+	@JsonManagedReference
 	private Vente vente;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonBackReference
+	@JsonManagedReference
 	private Produit produit;
 
 	private Short quantite;

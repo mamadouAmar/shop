@@ -1,11 +1,11 @@
-package sn.systemctl.ndiaye.shop.model.mocked;
+package sn.systemctl.ndiaye.shop.dto;
 
 import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 
-public class ReductedAchat {
+public class AchatDTO {
 	
 	private Long idAchat;
 

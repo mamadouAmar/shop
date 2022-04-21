@@ -1,9 +1,7 @@
 package sn.systemctl.ndiaye.shop.service;
 
-import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,13 +14,15 @@ import sn.systemctl.ndiaye.shop.repository.VenteRepository;
 @Service
 public class VenteService {
 
-	@Autowired
-	private VenteRepository venteRepository;
+	private final VenteRepository venteRepository;
 	
-	@Autowired
-	private VenteMapper mapper;
+	private final VenteMapper mapper;
 	
-	
+	public VenteService(VenteRepository venteRepository, VenteMapper mapper) {
+		this.venteRepository = venteRepository;
+		this.mapper = mapper;
+	}
+
 	public Page<VenteDTO> get(Pageable pageable){
 		return venteRepository.findAll(pageable).map(mapper::asDTO);
 	}

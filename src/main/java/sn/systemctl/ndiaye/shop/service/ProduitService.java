@@ -14,14 +14,16 @@ import sn.systemctl.ndiaye.shop.model.Produit;
 import sn.systemctl.ndiaye.shop.repository.ProduitRepository;
 
 @Service
-@Data
 public class ProduitService {
 
-	@Autowired
-	private ProduitRepository produitRepository;
+	private final ProduitRepository produitRepository;
 	
-	@Autowired
-	private ProduitMapper mapper;
+	private final ProduitMapper mapper;
+
+	public ProduitService(ProduitRepository produitRepository, ProduitMapper mapper) {
+		this.produitRepository = produitRepository;
+		this.mapper = mapper;
+	}
 
 	public Page<ProduitDTO> get(Pageable pageable) {
 		return produitRepository.findAll(pageable).map(mapper::asDTO);

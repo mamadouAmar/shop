@@ -2,7 +2,9 @@ package sn.systemctl.ndiaye.shop.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,6 +18,8 @@ import javax.persistence.Transient;
 
 import org.springframework.data.annotation.CreatedDate;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 
 //@Data
@@ -26,6 +30,8 @@ public class Achat implements Serializable{
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
+
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,9 +47,10 @@ public class Achat implements Serializable{
 	private Float frais;
 
 	private Float totalAchat;
-
+	
+//	@JsonManagedReference
 	@OneToMany(mappedBy = "achat",cascade = CascadeType.ALL)
-	private List<LigneAchat> achats;
+	private Set<LigneAchat> achats = new HashSet<>();
 
 	public Long getIdAchat() {
 		return idAchat;
@@ -65,7 +72,7 @@ public class Achat implements Serializable{
 		return totalAchat;
 	}
 
-	public List<LigneAchat> getAchats() {
+	public Set<LigneAchat> getAchats() {
 		return achats;
 	}
 
@@ -88,7 +95,7 @@ public class Achat implements Serializable{
 		}
 	}
 
-	public void setAchats(List<LigneAchat> achats) {
+	public void setAchats(Set<LigneAchat> achats) {
 		this.achats = achats;
 	}
 	

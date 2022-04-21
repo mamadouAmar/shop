@@ -27,11 +27,11 @@ public class LigneVente implements Serializable{
 	private Long idLigneVente;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonManagedReference
+	@JsonBackReference
 	private Vente vente;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonManagedReference
+	@JsonBackReference
 	private Produit produit;
 
 	private Short quantite;

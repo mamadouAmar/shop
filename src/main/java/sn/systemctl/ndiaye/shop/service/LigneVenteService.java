@@ -3,6 +3,7 @@ package sn.systemctl.ndiaye.shop.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sn.systemctl.ndiaye.shop.model.LigneVente;
@@ -11,7 +12,7 @@ import sn.systemctl.ndiaye.shop.repository.LigneVenteRepository;
 
 @Service
 public class LigneVenteService {
-
+	@Autowired
 	private LigneVenteRepository ligneVenteRepository;
 
 	public Optional<LigneVente> get(Integer id){

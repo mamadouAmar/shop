@@ -15,7 +15,7 @@ import sn.systemctl.ndiaye.shop.repository.ProduitRepository;
 
 @Service
 public class ProduitService {
-
+	@Autowired
 	private final ProduitRepository produitRepository;
 	
 	private final ProduitMapper mapper;

@@ -12,18 +12,20 @@ import sn.systemctl.ndiaye.shop.mappers.AchatMapper;
 import sn.systemctl.ndiaye.shop.model.Achat;
 import sn.systemctl.ndiaye.shop.model.LigneAchat;
 import sn.systemctl.ndiaye.shop.repository.AchatRepository;
+import sn.systemctl.ndiaye.shop.repository.LigneAchatRepository;
 
 @Service
 public class AchatService {
 
 	private final AchatRepository achatRepository;
-	
+	private final LigneAchatRepository ligneAchatRepository;
 	private final AchatMapper mapper;
 	
 	
 
-	public AchatService(AchatRepository achatRepository, @Qualifier("achatMapper") AchatMapper mapper) {
+	public AchatService(AchatRepository achatRepository, LigneAchatRepository ligneAchatRepository, @Qualifier("achatMapper") AchatMapper mapper) {
 		this.achatRepository = achatRepository;
+		this.ligneAchatRepository = ligneAchatRepository;
 		this.mapper = mapper;
 	}
 
@@ -36,6 +38,11 @@ public class AchatService {
 	}
 
 	public Achat post(Achat achat) {
-		return achatRepository.save(achat);
+		Achat savedAchat = achatRepository.save(achat);
+		for (LigneAchat ligneAchat: achat.getAchats()) {
+			ligneAchat.setAchat(savedAchat);
+			ligneAchatRepository.save(ligneAchat);
+		}
+		return savedAchat;
 	}
 }

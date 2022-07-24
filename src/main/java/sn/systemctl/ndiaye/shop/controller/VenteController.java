@@ -21,9 +21,7 @@ import sn.systemctl.ndiaye.shop.model.Vente;
 import sn.systemctl.ndiaye.shop.service.VenteService;
 
 @RestController
-@RequestMapping(path = "/api/shop/vente", 
-consumes = MediaType.ALL_VALUE, 
-produces = MediaType.ALL_VALUE)
+@RequestMapping(path = "/api/shop/vente")
 public class VenteController {
 
 	@Autowired
@@ -40,7 +38,7 @@ public class VenteController {
 		return venteService.get(id);
 	}
 
-	@PostMapping(consumes = {"application/json"})
+	@PostMapping()
 	public Vente post(@RequestBody Vente v) {
 		return venteService.post(v);
 	}

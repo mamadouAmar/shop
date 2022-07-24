@@ -12,7 +12,7 @@ public class VenteDTO {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateVente;
 
-	private Float totalVente;
+	private double totalVente;
 
 	public Long getIdVente() {
 		return idVente;
@@ -22,7 +22,7 @@ public class VenteDTO {
 		return dateVente;
 	}
 
-	public Float getTotalVente() {
+	public double getTotalVente() {
 		return totalVente;
 	}
 
@@ -34,7 +34,7 @@ public class VenteDTO {
 		this.dateVente = dateVente;
 	}
 
-	public void setTotalVente(Float totalVente) {
+	public void setTotalVente(double totalVente) {
 		this.totalVente = totalVente;
 	}
 	

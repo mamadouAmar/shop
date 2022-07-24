@@ -2,13 +2,7 @@ package sn.systemctl.ndiaye.shop.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,15 +23,30 @@ public class LigneVente implements Serializable{
 	private Long idLigneVente;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonBackReference
+	@JsonIgnore
 	private Vente vente;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Produit produit;
 
+	public double getPrixVente() {
+		return prixVente;
+	}
+
+	public void setPrixVente(double prixVente) {
+		this.prixVente = prixVente;
+	}
+
+	@Column(nullable = true)
+	private double prixVente;
+
 	private Short quantite;
 
-	private Float total;
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+	private double total;
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -59,7 +68,7 @@ public class LigneVente implements Serializable{
 		return quantite;
 	}
 
-	public Float getTotal() {
+	public double getTotal() {
 		return total;
 	}
 
@@ -80,7 +89,7 @@ public class LigneVente implements Serializable{
 	}
 
 	public void setTotal() {
-		this.total = (float) (quantite*produit.getPrixVente());
+		this.total = (double) (quantite*produit.getPrixVente());
 	}
 
 }

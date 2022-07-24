@@ -33,11 +33,16 @@ public class LigneAchat implements Serializable{
 
 	private Short quantite;
 
-	private Float coutUnitaire;
+	private double coutUnitaire;
 
-	private Float coutTotal;
+	public void setCoutTotal(double coutTotal) {
+		this.coutTotal = coutTotal;
+	}
 
-	private Float prixVente;
+	@Column(nullable = true)
+	private double coutTotal;
+
+	private double prixVente;
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -59,15 +64,15 @@ public class LigneAchat implements Serializable{
 		return quantite;
 	}
 
-	public Float getCoutUnitaire() {
+	public double getCoutUnitaire() {
 		return coutUnitaire;
 	}
 
-	public Float getCoutTotal() {
+	public double getCoutTotal() {
 		return coutTotal;
 	}
 
-	public Float getPrixVente() {
+	public double getPrixVente() {
 		return prixVente;
 	}
 
@@ -87,7 +92,7 @@ public class LigneAchat implements Serializable{
 		this.quantite = quantite;
 	}
 
-	public void setCoutUnitaire(Float coutUnitaire) {
+	public void setCoutUnitaire(double coutUnitaire) {
 		this.coutUnitaire = coutUnitaire;
 	}
 
@@ -95,19 +100,8 @@ public class LigneAchat implements Serializable{
 		this.coutTotal = coutUnitaire*quantite;
 	}
 
-	public void setPrixVente(Float prixVente) {
+	public void setPrixVente(double prixVente) {
 		this.prixVente = prixVente;
 	}
 
-	@Override
-	public String toString() {
-		return "LigneAchat{" +
-				"idLigneAchat=" + idLigneAchat +
-				", achat=" + achat +
-				", produit=" + produit +
-				", quantite=" + quantite +
-				", coutTotal=" + coutTotal +
-				", prixVente=" + prixVente +
-				'}';
-	}
 }

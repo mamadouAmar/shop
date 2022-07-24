@@ -23,15 +23,15 @@ public class AchatService {
 	private final AchatRepository achatRepository;
 	private final LigneAchatRepository ligneAchatRepository;
 	private final ProduitRepository produitRepository;
-	@Autowired
-	private AchatMapper mapper;
+	private final AchatMapper mapper;
 	
 	
 	@Autowired
-	public AchatService(AchatRepository achatRepository, LigneAchatRepository ligneAchatRepository, ProduitRepository produitRepository) {
+	public AchatService(AchatRepository achatRepository, LigneAchatRepository ligneAchatRepository, ProduitRepository produitRepository, AchatMapper mapper) {
 		this.achatRepository = achatRepository;
 		this.ligneAchatRepository = ligneAchatRepository;
 		this.produitRepository = produitRepository;
+		this.mapper = mapper;
 	}
 
 	public Page<AchatDTO> get(Pageable pageable){
@@ -44,12 +44,16 @@ public class AchatService {
 
 	@Transactional
 	public Achat post(Achat achat) {
+		achat.setTotalAchats();
+		achat.setCoutTotal();
 		Achat savedAchat = achatRepository.save(achat);
-		System.out.println("Achat : "+ savedAchat.getIdAchat());
 		for (LigneAchat ligneAchat: achat.getAchats()) {
 			Produit p = ligneAchat.getProduit();
 			p.setStock((short) (p.getStock()+ligneAchat.getQuantite()));
+			p.setPrixVente((short) ligneAchat.getPrixVente());
 			p = produitRepository.save(p);
+			ligneAchat.setCoutUnitaire(p.getCoutUnitaire());
+			ligneAchat.setCoutTotal();
 			LigneAchat la = ligneAchatRepository.save(ligneAchat);
 			la.setProduit(p);
 			la.setAchat(savedAchat);

@@ -9,10 +9,14 @@ public class AchatDTO {
 	
 	private Long idAchat;
 
+	public void setDateEnregistrement(Date dateEnregistrement) {
+		this.dateEnregistrement = dateEnregistrement;
+	}
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateEnregistrement;
 
-	private Float total;
+	private double coutTotal;
 
 	public Long getIdAchat() {
 		return idAchat;
@@ -22,16 +26,16 @@ public class AchatDTO {
 		return dateEnregistrement;
 	}
 
-	public Float getTotal() {
-		return total;
+	public double getCoutTotal() {
+		return coutTotal;
 	}
 
 	public void setIdAchat(Long idAchat) {
 		this.idAchat = idAchat;
 	}
 
-	public void setTotal(Float total) {
-		this.total = total;
+	public void setCoutTotal(double coutTotal) {
+		this.coutTotal = coutTotal;
 	}
 	
 	

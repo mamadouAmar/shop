@@ -24,13 +24,41 @@ public class Achat implements Serializable{
 	@Column(name = "idachat")
 	private Long idAchat;
 
+	public void setDateEnregistrement(Date dateEnregistrement) {
+		this.dateEnregistrement = dateEnregistrement;
+	}
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "dateenregistrement")
-	private Date dateEnregistrement;
+	@CreatedDate
+	private  Date dateEnregistrement;
 
-	private Float frais;
+	private double frais;
+	@Column(nullable = true)
+	private double totalAchats;
 
-	private Float coutTotal;
+	public void setTotalAchats(double totalAchats) {
+		this.totalAchats = totalAchats;
+	}
+
+	public void setCoutTotal(double coutTotal) {
+		this.coutTotal = coutTotal;
+	}
+
+	@Column(nullable = true)
+	private double coutTotal;
+
+	public double getTotalAchats() {
+		return totalAchats;
+	}
+
+	public void setTotalAchats() {
+		this.totalAchats = 0.0;
+		for (LigneAchat a:
+			 achats) {
+			this.totalAchats += a.getCoutTotal();
+		}
+	}
 	
 	@OneToMany(mappedBy = "achat")
 	private Set<LigneAchat> achats = new HashSet<>();
@@ -43,7 +71,7 @@ public class Achat implements Serializable{
 		return dateEnregistrement;
 	}
 
-	public Float getFrais() {
+	public double getFrais() {
 		return frais;
 	}
 
@@ -55,15 +83,15 @@ public class Achat implements Serializable{
 		this.idAchat = idAchat;
 	}
 
-	public void setFrais(Float frais) {
+	public void setFrais(double frais) {
 		this.frais = frais;
 	}
 
-	public void setCoutTotal(Float coutTotal){
-		this.coutTotal = coutTotal;
+	public void setCoutTotal(){
+		this.coutTotal = this.frais+this.totalAchats;
 	}
 
-	public Float getCoutTotal(){
+	public double getCoutTotal(){
 		return this.coutTotal;
 	}
 

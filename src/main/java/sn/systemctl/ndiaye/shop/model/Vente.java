@@ -33,29 +33,36 @@ public class Vente implements Serializable{
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreatedDate
-	private Date dateEnregistrement;
-
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateVente;
 
-	private Float totalVente;
+	@Temporal(TemporalType.TIMESTAMP)
+	private final Date derniereDateModification = new Date();
 
-	@OneToMany(mappedBy = "vente", fetch = FetchType.LAZY)
+	public void setTotalVente(double totalVente) {
+		this.totalVente = totalVente;
+	}
+
+	private double totalVente;
+
+	@OneToMany(mappedBy = "vente", fetch = FetchType.EAGER)
 	private List<LigneVente> ventes;
 
 	public Long getIdVente() {
 		return idVente;
 	}
 
-	public Date getDateEnregistrement() {
-		return dateEnregistrement;
+	public void setDateVente(Date dateVente) {
+		this.dateVente = dateVente;
 	}
-
 	public Date getDateVente() {
 		return dateVente;
 	}
 
-	public Float getTotalVente() {
+	public Date getDerniereDateModification() {
+		return derniereDateModification;
+	}
+
+	public double getTotalVente() {
 		return totalVente;
 	}
 
@@ -67,12 +74,8 @@ public class Vente implements Serializable{
 		this.idVente = idVente;
 	}
 
-	public void setDateVente(Date dateVente) {
-		this.dateVente = dateVente;
-	}
-
 	public void setTotalVente() {
-		this.totalVente = (float) 0;
+		this.totalVente = 0.0;
 		for (LigneVente vente : ventes) {
 			this.totalVente += vente.getTotal();
 		}

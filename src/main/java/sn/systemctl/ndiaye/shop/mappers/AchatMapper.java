@@ -7,7 +7,7 @@ import sn.systemctl.ndiaye.shop.dto.AchatDTO;
 import sn.systemctl.ndiaye.shop.mappers.generic.GenericMapper;
 import sn.systemctl.ndiaye.shop.model.Achat;
 
-@Component
+//@Component
 @Mapper(componentModel = "spring")
 public interface AchatMapper extends GenericMapper<Achat, AchatDTO>{
 

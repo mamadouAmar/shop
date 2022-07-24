@@ -2,6 +2,7 @@ package sn.systemctl.ndiaye.shop.service;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,12 +21,12 @@ public class VenteService {
 	private final VenteRepository venteRepository;
 	private final LigneVenteRepository ligneVenteRepository;
 
-	private final VenteMapper mapper;
+	@Autowired
+	private VenteMapper mapper;
 	
-	public VenteService(VenteRepository venteRepository, LigneVenteRepository ligneVenteRepository, @Qualifier("venteMapper") VenteMapper mapper) {
+	public VenteService(VenteRepository venteRepository, LigneVenteRepository ligneVenteRepository) {
 		this.venteRepository = venteRepository;
 		this.ligneVenteRepository = ligneVenteRepository;
-		this.mapper = mapper;
 	}
 
 	public Page<VenteDTO> get(Pageable pageable){
@@ -39,8 +40,8 @@ public class VenteService {
 	public Vente post(Vente vente) {
 
 		Vente savedVente = venteRepository.save(vente);
-		for (LigneVente ligneVente : vente.getVentes()
-			 ) {
+		for (LigneVente ligneVente : vente.getVentes())
+		{
 			ligneVente.setVente(savedVente);
 			ligneVenteRepository.save(ligneVente);
 		}

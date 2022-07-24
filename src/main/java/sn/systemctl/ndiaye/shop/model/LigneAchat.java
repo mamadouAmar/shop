@@ -5,9 +5,12 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import sn.systemctl.ndiaye.shop.model.Produit;
 
 @Entity
 public class LigneAchat implements Serializable{
@@ -21,13 +24,11 @@ public class LigneAchat implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idLigneAchat;
 
-	@ManyToOne
-	@JoinColumn(unique = true)
-//	@JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	@JsonIgnore
 	private Achat achat;
 
-	@ManyToOne
-	@JsonBackReference
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	private Produit produit;
 
 	private Short quantite;
@@ -97,5 +98,16 @@ public class LigneAchat implements Serializable{
 	public void setPrixVente(Float prixVente) {
 		this.prixVente = prixVente;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "LigneAchat{" +
+				"idLigneAchat=" + idLigneAchat +
+				", achat=" + achat +
+				", produit=" + produit +
+				", quantite=" + quantite +
+				", coutTotal=" + coutTotal +
+				", prixVente=" + prixVente +
+				'}';
+	}
 }

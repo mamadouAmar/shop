@@ -40,7 +40,7 @@ public class Vente implements Serializable{
 
 	private Float totalVente;
 
-	@OneToMany(mappedBy = "vente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "vente", fetch = FetchType.LAZY)
 	private List<LigneVente> ventes;
 
 	public Long getIdVente() {
@@ -81,7 +81,4 @@ public class Vente implements Serializable{
 	public void setVentes(List<LigneVente> ventes) {
 		this.ventes = ventes;
 	}
-	
-	
-
 }

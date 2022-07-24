@@ -1,12 +1,13 @@
 package sn.systemctl.ndiaye.shop.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 
@@ -34,6 +35,14 @@ public class Produit implements Serializable{
 	private Short coutUnitaire;
 
 	private Short prixVente;
+
+	@OneToMany(mappedBy = "produit", fetch = FetchType.LAZY)
+	@JsonIgnore
+	private Set<LigneVente> ventes = new HashSet<>();
+
+	@OneToMany(mappedBy = "produit", fetch = FetchType.LAZY)
+	@JsonIgnore
+	private Set<LigneAchat> achats = new HashSet<>();
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

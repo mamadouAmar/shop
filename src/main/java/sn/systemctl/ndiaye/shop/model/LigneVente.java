@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
@@ -30,8 +32,7 @@ public class LigneVente implements Serializable{
 	@JsonBackReference
 	private Vente vente;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonBackReference
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Produit produit;
 
 	private Short quantite;

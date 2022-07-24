@@ -33,13 +33,15 @@ public class ProduitController {
 	}
 
 	@GetMapping("/{id}")
-	public Optional<Produit> get(@PathVariable Integer id){
-		return produitService.get(id);
+	public ResponseEntity<Optional<Produit>> get(@PathVariable Integer id){
+		Optional<Produit> produit = produitService.get(id);
+		return ResponseEntity.ok().body(produit);
 	}
 
 	@PostMapping
-	public Produit post(@RequestBody Produit p) {
-		return produitService.post(p);
+	public ResponseEntity<Produit> post(@RequestBody Produit p) {
+		Produit produit = produitService.post(p);
+		return ResponseEntity.ok().body(produit);
 	}
 
 }

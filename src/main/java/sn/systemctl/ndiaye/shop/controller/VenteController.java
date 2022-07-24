@@ -34,13 +34,15 @@ public class VenteController {
 	}
 
 	@GetMapping("/{id}")
-	public Optional<Vente> get(@PathVariable Long id){
-		return venteService.get(id);
+	public ResponseEntity<Optional<Vente>> get(@PathVariable Long id){
+		Optional<Vente> vente = venteService.get(id);
+		return ResponseEntity.ok().body(vente);
 	}
 
 	@PostMapping()
-	public Vente post(@RequestBody Vente v) {
-		return venteService.post(v);
+	public ResponseEntity<Vente> post(@RequestBody Vente v) {
+		Vente vente = venteService.post(v);
+		return ResponseEntity.ok().body(vente);
 	}
 
 }

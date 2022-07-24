@@ -33,13 +33,15 @@ public class AchatController {
 	}
 
 	@GetMapping("/{id}")
-	public Optional<Achat> get(@PathVariable Long id){
-		return achatService.get(id);
+	public ResponseEntity<Optional<Achat>> get(@PathVariable Long id){
+		Optional<Achat> result = achatService.get(id);
+		return ResponseEntity.ok().body(result);
 	}
 
 	@PostMapping
-	public Achat post(@RequestBody Achat a) {
-		return achatService.post(a);
+	public ResponseEntity<Achat> post(@RequestBody Achat a) {
+		Achat achat = achatService.post(a);
+		return ResponseEntity.ok().body(achat);
 	}
 
 }

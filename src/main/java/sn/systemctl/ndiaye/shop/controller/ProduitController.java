@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import sn.systemctl.ndiaye.shop.dto.ProduitDTO;
 import sn.systemctl.ndiaye.shop.model.Produit;
 import sn.systemctl.ndiaye.shop.model.Vente;
 import sn.systemctl.ndiaye.shop.service.ProduitService;
 
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping("/api/shop/produit")
 public class ProduitController {
@@ -43,5 +45,4 @@ public class ProduitController {
 		Produit produit = produitService.post(p);
 		return ResponseEntity.ok().body(produit);
 	}
-
 }

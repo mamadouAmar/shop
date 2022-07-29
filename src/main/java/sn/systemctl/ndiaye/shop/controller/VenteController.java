@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import sn.systemctl.ndiaye.shop.dto.VenteDTO;
 import sn.systemctl.ndiaye.shop.model.Vente;
 import sn.systemctl.ndiaye.shop.service.VenteService;
 
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping(path = "/api/shop/vente")
 public class VenteController {

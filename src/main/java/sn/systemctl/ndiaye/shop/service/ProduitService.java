@@ -1,8 +1,10 @@
 package sn.systemctl.ndiaye.shop.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -10,19 +12,23 @@ import org.springframework.stereotype.Service;
 import lombok.Data;
 import sn.systemctl.ndiaye.shop.dto.ProduitDTO;
 import sn.systemctl.ndiaye.shop.mappers.ProduitMapper;
+import sn.systemctl.ndiaye.shop.mappers.ProduitMapperImpl;
 import sn.systemctl.ndiaye.shop.model.Produit;
 import sn.systemctl.ndiaye.shop.repository.ProduitRepository;
 
 @Service
 public class ProduitService {
-	@Autowired
 	private final ProduitRepository produitRepository;
 	
-	private final ProduitMapper mapper;
+	private final static ProduitMapper mapper = new ProduitMapperImpl();
 
-	public ProduitService(ProduitRepository produitRepository, ProduitMapper mapper) {
+	public ProduitService(ProduitRepository produitRepository) {
 		this.produitRepository = produitRepository;
-		this.mapper = mapper;
+	}
+
+	public List<ProduitDTO> getProduits(){
+		List<Produit> produits = produitRepository.findAll();
+		return mapper.asDTOList(produits);
 	}
 
 	public Page<ProduitDTO> get(Pageable pageable) {

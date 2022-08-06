@@ -1,5 +1,6 @@
 package sn.systemctl.ndiaye.shop.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,11 @@ public class ProduitController {
 		return ResponseEntity.ok().body(result);
 	}
 
+	@GetMapping("/dtos")
+	public ResponseEntity<List<ProduitDTO>> get(){
+		List<ProduitDTO> produitDTOS = produitService.getProduits();
+		return  ResponseEntity.ok().body(produitDTOS);
+	}
 	@GetMapping("/{id}")
 	public ResponseEntity<Optional<Produit>> get(@PathVariable Integer id){
 		Optional<Produit> produit = produitService.get(id);
